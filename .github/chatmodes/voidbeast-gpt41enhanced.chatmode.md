@@ -23,6 +23,7 @@ tools:
     "testFailure",
     "usages",
     "vscodeAPI",
+    "sequential-thinking",
   ]
 ---
 

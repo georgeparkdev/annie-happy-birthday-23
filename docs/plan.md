@@ -9,6 +9,16 @@ Mobile-first, single-page microsite in Russian with BTS/BT21 accents, 3 memory q
 
 Deadline: Tomorrow (launch-ready)
 
+Owner sign-off (2025-08-14)
+
+- Russian UI for all visible text
+- Quiz 1 correct month: November; Quiz 2: Uzbekistan; Quiz 3: VinPearl (distractors: VinZoo, VinIsland)
+- Finale gift clue: «в офисе, на верхней полке книжного шкафа»
+- Colors/fonts approved as proposed; Icons8 BT21 accents allowed with attribution
+- Proceed with BTS background tracks for a private link; fallback to instrumental if needed
+- Analytics: console logs only (no external services)
+- Deployment: GitHub Pages via GitHub Actions publishing src/ to gh-pages; no custom domain
+
 ## Scope & Deliverables
 
 - One-page experience with sections:
@@ -22,6 +32,7 @@ Deadline: Tomorrow (launch-ready)
 - Audio controller: background BTS random loop + finale overlay with happy-birthday.mp3 and volume adjustment
 - Image optimization and accessibility pass
 - Icons8 BT21 accents with attribution
+- Analytics: console logs only (anonymous, no external services)
 
 ## Milestones, Tasks, and Acceptance Criteria
 

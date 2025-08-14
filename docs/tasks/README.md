@@ -4,6 +4,7 @@ Target: Launch by 2025-08-15 (GitHub Pages)
 
 Milestones
 
+- [ ] M0 — Project Setup (2025-08-14)
 - [ ] M1 — Content & Localization (2025-08-14)
 - [ ] M2 — Design System & Assets (2025-08-14)
 - [ ] M3 — Section Scaffolding (2025-08-14)
@@ -16,6 +17,7 @@ Milestones
 
 Quick Links
 
+- [M0](./M0-setup.md)
 - [M1](./M1-content-localization.md)
 - [M2](./M2-design-assets.md)
 - [M3](./M3-section-scaffolding.md)

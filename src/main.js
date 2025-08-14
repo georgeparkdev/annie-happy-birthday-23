@@ -102,6 +102,24 @@
     const sectionIds = ['hero','quiz1','quiz2','quiz3','finale'];
     try { window.__bd_sectionIds = sectionIds; } catch(_) { }
   const mainEl = document.getElementById('app');
+  // Robust scroll helper that targets the main scroll container (fixes mobile nested scroller issues)
+  function getOffsetTopWithin(el, container){
+    let y = 0; let n = el;
+    while(n && n !== container){ y += (n.offsetTop || 0); n = n.offsetParent; }
+    return y;
+  }
+  function scrollToEl(el, behavior='smooth'){
+    if(!el) return;
+    const container = mainEl || document.getElementById('app');
+    if(container){
+      const top = getOffsetTopWithin(el, container);
+      try { container.scrollTo({ top, behavior }); }
+      catch { container.scrollTop = top; }
+    } else {
+      try { el.scrollIntoView({ behavior, block:'start' }); } catch { /* noop */ }
+    }
+  }
+  try { window.__bd_scrollToEl = scrollToEl; } catch(_) { }
   function lastUnlockedIndex(){
     let idx = 0;
     for(let i=0;i<sectionIds.length;i++){
@@ -127,8 +145,8 @@
     if(direction > 0 && curIdx >= lastIdx && lastIdx < sectionIds.length-1){
       const nextEl = document.getElementById(sectionIds[lastIdx+1]);
       if(nextEl && nextEl.hasAttribute('hidden')){
-        const el = document.getElementById(sectionIds[lastIdx]);
-        el && el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const el = document.getElementById(sectionIds[lastIdx]);
+  if(el){ scrollToEl(el, 'smooth'); }
         return true;
       }
     }
@@ -187,7 +205,7 @@
     if(idx === -1) return;
     dots.forEach((d,i)=>{ d.classList.toggle('active', i===idx); });
   }
-  function scrollToTarget(sel){ const el = document.querySelector(sel); if(el){ el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }
+  function scrollToTarget(sel){ const el = document.querySelector(sel); if(el){ scrollToEl(el, 'smooth'); } }
   dots.forEach(d=> d.addEventListener('click', (e)=>{
     // guard: don't allow jumping to locked/hidden sections
     if(d.disabled || d.getAttribute('aria-disabled') === 'true'){ e.preventDefault(); return; }
@@ -249,7 +267,7 @@
             if(el.hasAttribute('hidden')) el.removeAttribute('hidden');
             try { if(window.__bd_prepareAnim) window.__bd_prepareAnim(el); } catch(_){ }
             try { if(window.__bd_triggerAnim) window.__bd_triggerAnim(el); } catch(_){ }
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            try { (window.__bd_scrollToEl || scrollToEl)(el, 'smooth'); } catch { /* noop */ }
           }
         }, 600);
       }
@@ -273,8 +291,8 @@
       const el = targetSel ? document.querySelector(targetSel) : null;
       if(!el) return;
       // ensure target is revealed (remove hidden) before scroll
-      if(el.hasAttribute('hidden')){ el.removeAttribute('hidden'); el.classList.add('just-revealed'); requestAnimationFrame(()=> el.classList.remove('just-revealed')); }
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if(el.hasAttribute('hidden')){ el.removeAttribute('hidden'); el.classList.add('just-revealed'); requestAnimationFrame(()=> el.classList.remove('just-revealed')); }
+  try { (window.__bd_scrollToEl || scrollToEl)(el, 'smooth'); } catch { /* noop */ }
     });
   });
 
@@ -654,7 +672,7 @@ function confettiBurst(){
       if(dotQ1){ dotQ1.disabled = false; dotQ1.removeAttribute('aria-disabled'); }
       if(el && el.hasAttribute('hidden')) el.removeAttribute('hidden');
     } catch(_){ }
-    if(el){ el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  if(el){ try { (window.__bd_scrollToEl || scrollToEl)(el, 'smooth'); } catch { /* noop */ } }
   });
 })();
 

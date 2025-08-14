@@ -5,59 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#7C3AED" />
     <title>С Днём Рождения! 💜</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fonts TBD in M2; placeholder to keep structure ready -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
+    <meta name="description" content="Нежная поздравительная страница с викториной, моментами и музыкой BTS/BT21 для любимой." />
+    <meta property="og:title" content="С Днём Рождения! 💜" />
+    <meta property="og:description" content="Нежная поздравительная страница с викториной, моментами и музыкой BTS/BT21." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./img/bt21/icons8-bt21-100.png" />
   </head>
   <body>
-    <header class="site-header" role="banner">
-      <h1 class="title">С днём рождения, любимая! 💜</h1>
-    </header>
+  <!-- ARIA live region for dynamic feedback (M5, M8) -->
+  <div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+
 
     <main id="app" role="main">
-      <section id="intro" class="chapter" aria-label="Вступление">
+      <section id="hero" class="chapter bg-purple hero" aria-label="Вступление">
         <div class="container">
-          <h2>Добро пожаловать 🎉</h2>
-          <p>Прокручивай вниз — тебя ждут сюрпризы, воспоминания и маленькая викторина.</p>
+          <h1 class="fancy" style="font-size:clamp(2rem,4.5vw,3.25rem); margin:.2em 0 .4em">С днём рождения, любимая! 💜</h1>
+          <p style="font-size:1.05rem; opacity:.95; margin:.2em 0 1em">
+            Сегодня только твой день. Спасибо, что ты есть. Борэхэ — я фиолетю тебя! 💜
+          </p>
+          <p style="margin:0 0 1.25em; opacity:.9">Нажми «Начать» — поехали вспоминать лучшие моменты! 🎉</p>
+          <p>
+            <button type="button" id="hero-start" class="cta" data-next="#quiz1" aria-controls="quiz1">Начать 💜</button>
+          </p>
+          <figure style="margin:.75em 0 0">
+            <img src="./img/bt21/icons8-bt21-100-5.png" alt="Милый акцент BT21 на день рождения" width="72" height="72" />
+          </figure>
+        </div>
+        <!-- playful floating BT21 stickers (6 on hero: 3 top, 3 bottom) -->
+        <div class="decor decor-bt21" aria-hidden="true">
+          <img class="sticker" data-row="top"    src="./img/bt21/icons8-bt21-100.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="top"    src="./img/bt21/icons8-bt21-100-2.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="top"    src="./img/bt21/icons8-bt21-100-3.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-4.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-6.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-7.png" alt="" width="64" height="64" />
         </div>
       </section>
 
-      <section id="quiz1" class="chapter" aria-label="Викторина 1">
+      <section id="quiz1" class="chapter bg-pink" aria-label="Викторина 1 — Месяц посещения Miracle & Butterfly Garden" hidden>
         <div class="container">
           <h2>Вопрос 1</h2>
-          <p>Про наш день в Miracle & Butterfly Garden — в каком месяце это было?</p>
-          <!-- Кнопки и логика появятся в M5; пока — заполнитель -->
+          <p class="question">Наш цветочный рай в Dubai Miracle & Butterfly Garden — в каком месяце мы там были?</p>
+          <figure data-gallery="butterfly" data-images="./img/butterfly-and-miracle-garden-2023/20231119_125830.jpg|./img/butterfly-and-miracle-garden-2023/IMG_20241125_233308_775.jpg|./img/butterfly-and-miracle-garden-2023/IMG_20241125_233337_241.jpg|./img/butterfly-and-miracle-garden-2023/IMG_20241125_233343_385.jpg">
+            <img class="media contain" src="./img/butterfly-and-miracle-garden-2023/20231119_125830.jpg" alt="Мы в Dubai Miracle & Butterfly Garden среди цветов, ноябрь 2023" decoding="async" />
+            <figcaption style="opacity:.8">Подсказка: листья были не только зелёными 😉</figcaption>
+          </figure>
+          <ul class="options d-flex" role="list">
+            <li><button type="button" class="option" data-qid="q1" data-value="october" aria-label="Октябрь">Октябрь</button></li>
+            <li><button type="button" class="option" data-qid="q1" data-value="november" data-correct="true" aria-label="Ноябрь (правильный ответ)">Ноябрь</button></li>
+            <li><button type="button" class="option" data-qid="q1" data-value="december" aria-label="Декабрь">Декабрь</button></li>
+          </ul>
         </div>
       </section>
-
-      <section id="quiz2" class="chapter" aria-label="Викторина 2">
+      <section id="quiz2" class="chapter bg-sky" aria-label="Викторина 2 — Страна путешествия" hidden>
         <div class="container">
           <h2>Вопрос 2</h2>
-          <p>Где мы путешествовали на этих фото?</p>
+          <p class="question">Эти улочки и узоры… Какая это страна?</p>
+          <figure data-gallery="uzbekistan" data-images="./img/uzbekistan/20240215_114907%201.jpg|./img/uzbekistan/IMG_20241125_235042_405.jpg">
+            <img class="media contain" src="./img/uzbekistan/20240215_114907%201.jpg" alt="Путешествие в Узбекистан: прогулка по старинным улочкам" loading="lazy" decoding="async" />
+            <figcaption style="opacity:.8">Подсказка: самса, плов и синяя глазурь узоров…</figcaption>
+          </figure>
+          <ul class="options d-flex" role="list">
+            <li><button type="button" class="option" data-qid="q2" data-value="uae" aria-label="ОАЭ">ОАЭ</button></li>
+            <li><button type="button" class="option" data-qid="q2" data-value="uzbekistan" data-correct="true" aria-label="Узбекистан (правильный ответ)">Узбекистан</button></li>
+            <li><button type="button" class="option" data-qid="q2" data-value="vietnam" aria-label="Вьетнам">Вьетнам</button></li>
+          </ul>
         </div>
       </section>
 
-      <section id="quiz3" class="chapter" aria-label="Викторина 3">
+      <section id="quiz3" class="chapter bg-yellow" aria-label="Викторина 3 — Воспоминание VinPearl" hidden>
         <div class="container">
           <h2>Вопрос 3</h2>
-          <p>Ещё одно милое воспоминание — угадай правильный вариант.</p>
+          <p class="question">Это место — чистая магия огней. Что выбираем?</p>
+          <figure data-gallery="vinpearl" data-images="./img/vinpearl/20241018_184228.jpg|./img/vinpearl/20241018_121909.jpg|./img/vinpearl/20241018_201628.jpg">
+            <img class="media contain" src="./img/vinpearl/20241018_184228.jpg" alt="Поездка в VinPearl: вечерние огни и радость на лицах" loading="lazy" decoding="async" />
+            <figcaption style="opacity:.8">Подсказка: аттракционы и огни у воды…</figcaption>
+          </figure>
+          <ul class="options d-flex" role="list">
+            <li><button type="button" class="option" data-qid="q3" data-value="VinPearl" data-correct="true" aria-label="VinPearl (правильный ответ)">VinPearl</button></li>
+            <li><button type="button" class="option" data-qid="q3" data-value="VinZoo" aria-label="VinZoo">VinZoo</button></li>
+            <li><button type="button" class="option" data-qid="q3" data-value="VinIsland" aria-label="VinIsland">VinIsland</button></li>
+          </ul>
         </div>
       </section>
 
-      <section id="finale" class="chapter" aria-label="Финал">
+      <section id="finale" class="chapter bg-purple" aria-label="Финал" hidden>
         <div class="container">
           <h2>Финал ✨</h2>
-          <p>Здесь будет тёплое поздравление и финальный сюрприз.</p>
+          <p>
+            Ты умничка! Спасибо за каждый момент — с тобой всё ярче. Пусть этот год будет ещё счастливее и легче. Борэхэ 💜
+          </p>
+          <p style="opacity:.9">Готова к финальной подсказке к подарку?</p>
+          <p>
+            <button type="button" id="reveal-clue" aria-controls="gift-clue" aria-expanded="false">Показать подсказку 🎁</button>
+          </p>
+          <p id="gift-clue" hidden>
+            Подсказка: подарок ждёт тебя в офисе, на верхней полке книжного шкафа.
+          </p>
+        </div>
+        <!-- balloons at the top -->
+        <div class="decor balloons" aria-hidden="true">
+          <div class="balloon b1"></div>
+          <div class="balloon b2"></div>
+          <div class="balloon b3"></div>
+          <div class="balloon b4"></div>
+          <div class="balloon b5"></div>
+        </div>
+        <!-- BT21 stickers (7 on finale, bottom only) -->
+        <div class="decor decor-bt21" aria-hidden="true">
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-2.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-3.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-4.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-5.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-6.png" alt="" width="64" height="64" />
+          <img class="sticker" data-row="bottom" src="./img/bt21/icons8-bt21-100-7.png" alt="" width="64" height="64" />
         </div>
       </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-      <small>
-        BT21 иконки: © Icons8 — требуется атрибуция. Ссылка и точная формулировка будут добавлены позже.
-      </small>
-    </footer>
+    <!-- Side dot navigation (desktop) -->
+    <aside class="dotnav" aria-label="Быстрая навигация по разделам">
+      <button type="button" class="dot active" data-target="#hero" aria-label="К началу"></button>
+      <button type="button" class="dot" data-target="#quiz1" aria-label="К вопросу 1" disabled aria-disabled="true"></button>
+      <button type="button" class="dot" data-target="#quiz2" aria-label="К вопросу 2" disabled aria-disabled="true"></button>
+      <button type="button" class="dot" data-target="#quiz3" aria-label="К вопросу 3" disabled aria-disabled="true"></button>
+      <button type="button" class="dot" data-target="#finale" aria-label="К финалу" disabled aria-disabled="true"></button>
+    </aside>
 
+    <!-- Audio controls (hidden by default, toggled via button) -->
+    <section id="audio-panel" class="audio-controls" role="region" aria-label="Музыкальный плеер">
+      <img id="audio-cover" class="audio-cover" src="./img/bt21/icons8-bt21-100-5.png" alt="" width="32" height="32" />
+      <div class="audio-meta">
+        <div id="audio-title" class="audio-title">—</div>
+      </div>
+      <div class="audio-buttons">
+        <button type="button" id="audio-prev" aria-label="Предыдущий трек">⏮</button>
+        <button type="button" id="audio-play" aria-pressed="false" aria-label="Воспроизвести">▶️</button>
+        <button type="button" id="audio-next" aria-label="Следующий трек">⏭</button>
+      </div>
+      <label for="audio-volume" class="sr-only">Громкость</label>
+      <input id="audio-volume" type="range" min="0" max="1" step="0.05" value="0.6" aria-label="Громкость" />
+    </section>
+
+    <!-- Toggle for audio panel (bottom-right) -->
+    <button type="button" id="audio-toggle" class="audio-toggle" aria-controls="audio-panel" aria-expanded="false" aria-label="Открыть аудиопанель">▲</button>
+
+    <!-- Lightbox overlay -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" hidden>
+      <button type="button" class="lightbox-close" aria-label="Закрыть">✕</button>
+      <button type="button" class="lightbox-prev" aria-label="Предыдущее">⟨</button>
+      <img class="lightbox-img" alt="" />
+      <button type="button" class="lightbox-next" aria-label="Следующее">⟩</button>
+    </div>
     <script src="./main.js" defer></script>
   </body>
 </html>
+<!--
+  Image Map (compiled)
+  - Miracle/Butterfly (quiz1):
+    • ./img/butterfly-and-miracle-garden-2023/20231119_125830.jpg
+    • ./img/butterfly-and-miracle-garden-2023/IMG_20241125_233308_775.jpg
+    • ./img/butterfly-and-miracle-garden-2023/IMG_20241125_233337_241.jpg
+    • ./img/butterfly-and-miracle-garden-2023/IMG_20241125_233343_385.jpg
+  - Uzbekistan (quiz2):
+    • ./img/uzbekistan/20240215_114907 1.jpg
+    • ./img/uzbekistan/IMG_20241125_235042_405.jpg
+  - VinPearl (quiz3):
+    • ./img/vinpearl/20241018_121909.jpg
+    • ./img/vinpearl/20241018_184228.jpg
+    • ./img/vinpearl/20241018_201628.jpg
+  - BT21 accents (Icons8):
+    • ./img/bt21/icons8-bt21-100.png (and variants -2..-7)
+-->
